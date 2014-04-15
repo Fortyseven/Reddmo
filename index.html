@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Reddmo Magazine</title>
+    <script src="js/jquery-1.6.4.min.js"></script>
+    <script src="js/app/main.js"></script>
+    <script src="js/seedrandom.js"></script>
+    <script src="js/html2canvas.js"></script>
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="SubredditList">
+    <div class="content">
+        <ul>
+            <li>all</li>
+            <li>funny</li>
+            <li>politics</li>
+            <li>gaming</li>
+            <li>askreddit</li>
+            <li>worldnews</li>
+            <li>pics</li>
+            <li>android</li>
+            <li>fffffffuuuuuuuuuuuu</li>
+            <li>science</li>
+            <li>news</li>
+            <li>AskReddit</li>
+            <li>IAmA</li>
+            <li>todayilearned</li>
+            <li>trees</li>
+            <li>WTF</li>
+            <li>atheism</li>
+            <li>AdviceAnimals</li>
+            <li>tf2</li>
+            <li>aww</li>
+            <li>firstworldproblems</li>
+            <li>technology</li>
+        </ul>
+        <div class="controls">
+            <button id="RenderButton">Save to Imgur</button>
+            <button id="RefreshButton">Flush Cache</button>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div style="text-align:center; color: red; font-weight: bold; font-size: 0.8em; opacity: 0.5">Page is cached locally to prevent spamming Reddit. Hit 'Flush Cache' to force a reload from the site.</div>
+
+<div id="Page">
+    <div id="BackgroundImage"></div>
+    <div id="Content">
+        <div id="Header">
+            <div id="Title"></div>
+            <div id="Infoline">
+                <div id="Subreddit"></div>
+                <div id="Date"></div>
+            </div>
+        </div>
+        <div id="HeadlineBoxes">
+            <div id="LeftCol">
+                <div class="headline_box"></div>
+                <div class="headline_box"></div>
+                <div class="headline_box"></div>
+            </div>
+            <div id="RightCol">
+                <div class="headline_box"></div>
+                <div class="headline_box"></div>
+                <div class="headline_box"></div>
+                <div class="headline_box"></div>
+                <div class="headline_box"></div>
+            </div>
+        </div>
+        <div id="UPCBox"></div>
+    </div>
+</div>
+<br>
+
+<div align="center" style="color:#555">
+    <small>Coded against Chrome; seems to work in Firefox.</small>
+</div>
+<br>
+
+<div align="center" style="color:#555"><a href="http://github.com/Fortyseven">Fork me on GitHub!</a></div>
+</body>
+</html>
