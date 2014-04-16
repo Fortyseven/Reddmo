@@ -1,14 +1,20 @@
-@import url(http://fonts.googleapis.com/css?family=Monoton);
-@import url(http://fonts.googleapis.com/css?family=Oswald);
-@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,700,300);
-@import url(http://fonts.googleapis.com/css?family=News+Cycle:400,700);
 
 body {
-    background:  white;
-    margin:      0;
-    padding:     0;
-    font-family: sans-serif;
-    font-size:   15px;
+    /*background:   white;*/
+    margin:       0;
+    padding:      0;
+    font-family:  sans-serif;
+    font-size:    15px;
+    max-width:    1024px;
+    margin-left:  auto;
+    margin-right: auto;
+
+    background:   -moz-linear-gradient(top, #ffffff 0%, #c9c9c9 100%); /* FF3.6+ */
+    background:   -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #c9c9c9)); /* Chrome,Safari4+ */
+    background:   -webkit-linear-gradient(top, #ffffff 0%, #c9c9c9 100%); /* Chrome10+,Safari5.1+ */
+    background:   -o-linear-gradient(top, #ffffff 0%, #c9c9c9 100%); /* Opera 11.10+ */
+    background:   -ms-linear-gradient(top, #ffffff 0%, #c9c9c9 100%); /* IE10+ */
+    background:   linear-gradient(to bottom, #ffffff 0%, #c9c9c9 100%); /* W3C */
 }
 
 #Page {
@@ -38,23 +44,27 @@ body {
 }
 
 /*-----------------------------------------------------*/
-#SubredditList {
-    color:      white;
-    text-align: center;
-    padding:    0.5em;
-    background: darkred;
+#Header {
+    color:         white;
+    text-align:    center;
+    padding:       0.5em;
+    background:    darkred;
+    border-radius: 1em;
 }
 
-#SubredditList .content {
+#Header .content {
     margin-left:  auto;
     margin-right: auto;
+    font-size:    1.0em;
 }
 
-#SubredditList ul {
+#Header ul {
     list-style-type: none;
+    padding:         0;
+    margin:          0.5em;
 }
 
-#SubredditList li {
+#Header li {
     cursor:        pointer;
     display:       inline;
     background:    #CC0000;
@@ -66,24 +76,39 @@ body {
     border-radius: 4px;
 }
 
-#SubredditList li:hover {
+#Header li:hover {
     color:      black;
-    background: gold;
+    background: red;
+    box-shadow: none;
+    position:   relative;
+    top:        2px;
+    left:       2px;
 }
 
-.subreddit-selected {
-    color:       yellow;
+#Header li.subreddit-selected {
+    color:       black;
     font-weight: bold;
+    background:  gold;
+    box-shadow:  none;
 }
 
-#SubredditList .controls {
-    clear: both;
-    float: right;
+#Header .controls {
+    width:        80%;
+    margin-left:  auto;
+    margin-right: auto;
 }
 
+#Header .notice {
+    padding-right: 1em;
+    text-align:    center;
+    color:         red;
+    font-weight:   bold;
+    font-size:     0.8em;
+    opacity:       0.6;
+}
 
 /*-----------------------------------------------------*/
-#Header {
+#MagazineHeader {
     width:         36em;
     border-bottom: 2px solid white;
     padding-top:   1em;
@@ -149,9 +174,8 @@ body {
     height:         122px;
     text-transform: uppercase;
     text-shadow:    2px 2px 1px black;
-    font-family:    Oswald, 'Roboto Condensed Bold', sans-serif;
-    font-size:      1.5em;
-    line-height:    1.3em;
+    line-height:    1;
+    padding-bottom: 0.2em;
 }
 
 .headline_box a {
@@ -159,41 +183,48 @@ body {
     color:           yellow;
 }
 
-/*.blurb:nth-child(2n+1) a {*/
-/*color:       orange;*/
-/*text-shadow: 2px 2px 1px black;*/
-/*}*/
+.headline_box span {
+    color:           white;
+    text-decoration: underline;
+}
 
-/*.blurb-large {*/
-/*font-size:      2em;*/
-/*line-height:    1em;*/
-/*font-weight:    bold;*/
-/*padding-bottom: 0.7em;*/
-/*padding-bottom: 0.5em;*/
-/*padding-top:    0.5em;*/
-/*}*/
+.headline-size-xlarge {
+    font-size:   4em;
+    line-height: 1.1em;
+}
 
-/*.blurb-small {*/
-/*font-size:      0.8em;*/
-/*line-height:    1.3em;*/
-/*padding-bottom: 8em;*/
-/*padding-bottom: 3em;*/
-/*padding-top:    3em;*/
+.headline-size-large {
+    font-size:   2.2em;
+    line-height: 1.1em;
+}
 
-/*font-weight:    bold;*/
-/*}*/
+.headline-size-medium {
+    font-size:   1.7em;
+    line-height: 1.1em;
+}
 
-/*.blurb-style1 {*/
-/*background: black;*/
-/*padding:    1em;*/
-/*margin:     0;*/
-/*margin-bottom: 	1em;*/
-/*}*/
+.headline-size-small {
+    font-size:   1.4em;
+    line-height: 1.1em;
+}
 
-.blurb-style1:before {
-    font-size: 1em;
-    color:     white;
-    content:   "EXCLUSIVE: ";
+.headline-style-1 a {
+    font-family: "oswaldregular", sans-serif;
+    color:       gold;
+    text-shadow: 2px 2px 1px black;
+}
+
+.headline-style-2 a {
+    font-family: serif, "oswaldregular", sans-serif;
+    text-shadow: 2px 2px 1px black;
+    font-weight: bold;
+    color:       red;
+}
+
+.headline-style-3 a {
+    font-family: "oswaldbold";
+    text-shadow: 1px 1px 3px black;
+    color:       white;
 }
 
 /*-----------------------------------------------------*/
@@ -218,21 +249,41 @@ button {
     border:        none;
     border-radius: 1em;
     box-shadow:    black 1px 1px 5px;
-    padding-left: 1em;
+    padding:       0.3em;
+    padding-left:  1em;
     padding-right: 1em;
-    font-weight: bold;
+    font-weight:   bold;
+    line-height:   1;
 }
 
 button:hover {
     position:   relative;
     background: yellow;
     top:        1px;
-    /*left:       1px;*/
     color:      black;
-
     box-shadow: none;
 }
 
 #RenderButton {
     opacity: 0.5;
 }
+
+#IntroText {
+    font-weight: bold;
+    font-size:   1.0em;
+}
+
+#Ad {
+    width:    0px;
+    height:   0px;
+    position: relative;
+    top:      -800px;
+    right:    0px;
+}
+
+#Ad .content {
+    width:  120px;
+    height: 600px;
+    border: 1px solid black;
+}
+
