@@ -2,119 +2,125 @@
 <html>
 <head>
     <title>Reddmo Magazine</title>
-    <link href="css/fonts.css" rel="stylesheet" type="text/css"/>
-    <link href="css/main.css" rel="stylesheet" type="text/css"/>
-    <script src="js/jquery-1.6.4.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:300,700" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
     <script src="js/app/main.js"></script>
     <script src="js/seedrandom.js"></script>
     <script src="js/html2canvas.js"></script>
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ( function( i, s, o, g, r, a, m ) {
+            i[ 'GoogleAnalyticsObject' ] = r;
+            i[ r ] = i[ r ] || function() {
+                ( i[ r ].q = i[ r ].q || [] ).push( arguments )
+            }, i[ r ].l = 1 * new Date();
+            a = s.createElement( o ),
+                m = s.getElementsByTagName( o )[ 0 ];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore( a, m )
+        } )( window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga' );
 
-        ga('create', 'UA-40660667-2', 'bytestemplar.com');
-        ga('send', 'pageview');
-
+        ga( 'create', 'UA-40660667-2', 'bytestemplar.com' );
+        ga( 'send', 'pageview' );
     </script>
 </head>
+
 <body>
-<div id="Header">
-    <div class="content">
-        <div id="IntroText">Select one of these subreddits, or manually enter your favorite!</div>
-        <ul>
-            <li>all</li>
-            <li>funny</li>
-            <li>politics</li>
-            <li>gaming</li>
-            <li>askreddit</li>
-            <li>worldnews</li>
-            <li>pics</li>
-            <li>android</li>
-            <li>fffffffuuuuuuuuuuuu</li>
-            <li>science</li>
-            <li>news</li>
-            <li>conspiracy</li>
-            <li>conspiratard</li>
-            <li>trees</li>
-            <li>WTF</li>
-            <li>atheism</li>
-            <li>AdviceAnimals</li>
-            <li>tf2</li>
-            <li>aww</li>
-            <li>firstworldproblems</li>
-            <li>technology</li>
-        </ul>
-        <div class="controls">
-            <div class="custom_sub">
-                <b>/r/&nbsp;</b><input id="CustomSubredditBox" type="text" placeholder="Custom subreddit"/>
-                <button id="CustomGo"><span class="oi" data-glyph="media-play"></span> Go</button>
-                <button id="RenderButton"><span class="oi" data-glyph="cloud-upload"></span> Save Cover to Imgur</button>
-                <button id="RefreshButton"><span class="oi" data-glyph="reload"></span> Flush Cache</button>
+    <header>
+        <div class="content">
+            <div id="IntroText">Select one of these subreddits, or manually enter your favorite!</div>
+            <label for="subreddit">/r/</label>
+            <select name="subreddit" id="SubredditDropdown">
+                <option>AdviceAnimals</option>
+                <option>all</option>
+                <option>android</option>
+                <option>askreddit</option>
+                <option>atheism</option>
+                <option>aww</option>
+                <option>conspiracy</option>
+                <option>conspiratard</option>
+                <option>fffffffuuuuuuuuuuuu</option>
+                <option>firstworldproblems</option>
+                <option>funny</option>
+                <option>gaming</option>
+                <option>news</option>
+                <option>overwatch</option>
+                <option>pics</option>
+                <option>politics</option>
+                <option>science</option>
+                <option>technology</option>
+                <option>tf2</option>
+                <option>trees</option>
+                <option>worldnews</option>
+                <option>WTF</option>
+            </select>
+            <div class="controls">
+                <div class="custom_sub">
+                    <b>/r/&nbsp;</b><input id="CustomSubredditBox" type="text" placeholder="Custom subreddit" />
+                    <button id="CustomGo"><span class="oi" data-glyph="media-play"></span> Go</button>
+                    <button id="RenderButton"><span class="oi" data-glyph="cloud-upload"></span> Save Cover to Imgur</button>
+                    <button id="RefreshButton"><span class="oi" data-glyph="reload"></span> Flush Cache</button>
+                </div>
+                <!--<div class="buttons">-->
+                <!--</div>-->
+                <div class="notice">Pages are cached locally in the browser to prevent spamming Reddit.<br/>Hit 'Flush Cache' to force a reload from the site.
+                </div>
             </div>
-            <!--<div class="buttons">-->
-            <!--</div>-->
-            <div class="notice">Pages are cached locally in the browser to prevent spamming Reddit.<br/>Hit 'Flush
-                                Cache' to force a reload
-                                from the site.
-            </div>
+            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
-    </div>
-</div>
+    </header>
 
-<div id="Page">
-    <div id="BackgroundImage"></div>
-    <div id="Content">
-        <div id="MagazineHeader">
-            <div id="Title"></div>
-            <div id="Infoline">
-                <div id="Subreddit"></div>
-                <div id="Date"></div>
+    <div id="Page">
+        <div id="BackgroundImage"></div>
+        <div id="Content">
+            <div id="MagazineHeader">
+                <div id="Title"></div>
+                <div id="Infoline">
+                    <div id="Subreddit"></div>
+                    <div id="Date"></div>
+                </div>
             </div>
+            <div id="HeadlineBoxes">
+                <div id="LeftCol">
+                    <div class="headline_box"></div>
+                    <div class="headline_box"></div>
+                    <div class="headline_box"></div>
+                </div>
+                <div id="RightCol">
+                    <div class="headline_box"></div>
+                    <div class="headline_box"></div>
+                    <div class="headline_box"></div>
+                    <div class="headline_box"></div>
+                    <div class="headline_box"></div>
+                </div>
+            </div>
+            <div id="UPCBox"></div>
         </div>
-        <div id="HeadlineBoxes">
-            <div id="LeftCol">
-                <div class="headline_box"></div>
-                <div class="headline_box"></div>
-                <div class="headline_box"></div>
-            </div>
-            <div id="RightCol">
-                <div class="headline_box"></div>
-                <div class="headline_box"></div>
-                <div class="headline_box"></div>
-                <div class="headline_box"></div>
-                <div class="headline_box"></div>
-            </div>
+    </div>
+    <div id="Ad">
+        <div class="content">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Reddmo -->
+            <ins class="adsbygoogle" style="display:inline-block;width:120px;height:600px" data-ad-client="ca-pub-1889063767031292" data-ad-slot="5807839555"></ins>
+            <script>
+                ( adsbygoogle = window.adsbygoogle || [] ).push( {} );
+            </script>
         </div>
-        <div id="UPCBox"></div>
     </div>
-</div>
-<div id="Ad">
-    <div class="content">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- Reddmo -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:120px;height:600px"
-             data-ad-client="ca-pub-1889063767031292"
-             data-ad-slot="5807839555"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push( {} );
-        </script>
+    <br>
+
+    <div align="center" style="color:#555">
+        <small>Coded against Chrome; seems to work in Firefox.</small>
     </div>
-</div>
-<br>
+    <br>
 
-<div align="center" style="color:#555">
-    <small>Coded against Chrome; seems to work in Firefox.</small>
-</div>
-<br>
-
-<div align="center" style="color:#555"><a onclick="alert('Soon!'); return false;" href="http://github.com/Fortyseven">Fork
-                                                                                                                      me
-                                                                                                                      on
-                                                                                                                      GitHub!</a>
-</div>
+    <div align="center" style="color:#555"><a onclick="alert('Soon!'); return false;" href="http://github.com/Fortyseven">Fork me on GitHub!</a>
+    </div>
 </body>
+
 </html>

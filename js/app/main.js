@@ -3,28 +3,29 @@ var LIMIT = 100;
 var MAX_TITLE_LENGTH = 50;
 var MAX_STYLES = 3;
 
-var zazzle_words = ["EXCLUSIVE:", "EXCLUSIVE!", "BREAKING:"];
-var month_str = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+var zazzle_words = [ "EXCLUSIVE:", "EXCLUSIVE!", "BREAKING:" ];
+var month_str = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec' ];
 var reddit_url = "";
 
-$( document ).ready( function ()
+$( document ).ready( function()
 {
     var subreddit = FetchSubredditFromURL();
 
-    if ( subreddit == "all" ) {
+    if( subreddit == "all" ) {
         subreddit = "";
     }
 
     // populate custom input text box if not all
-    if ( subreddit != "" ) {
-        $( "#CustomSubredditBox" ).val( subreddit );
+    if( subreddit != "" ) {
+        $( "#CustomSubredditBox" )
+            .val( subreddit );
     }
 
     // try to get it from localstorage first
     var cached_copy = sessionStorage.getItem( subreddit + '_json' );
 
     // if we don't have this feed cached, go get it.
-    if ( !cached_copy ) {
+    if( !cached_copy ) {
         LoadFreshFeed( subreddit );
     }
     else {
@@ -35,64 +36,64 @@ $( document ).ready( function ()
 
     BindControls( subreddit );
     BindSubreddits( subreddit );
-} );
+});
 
 function BindControls( subreddit )
 {
-    $( "#CustomSubredditBox" )
-            .keydown( function ( e )
-            {
-                if ( e.which == 13 ) {
-                    window.location.hash = $( "#CustomSubredditBox" ).val();
-                    window.location.reload();
-                }
-            } )
-            .select();
+    $( "#CustomSubredditBox" ).keydown( function( e ) {
+            if ( e.which == 13 ) {
+                window.location.hash = $( "#CustomSubredditBox" ).val();
+                window.location.reload();
+            }
+        } )
+        .select();
 
-    $( "#RefreshButton" ).click( function ()
-    {
+    $( "#RefreshButton" ).click( function() {
         //sessionStorage.clear
         sessionStorage.removeItem( subreddit + '_json' );
         window.location.reload();
     } );
 
-    $( "#RenderButton" ).click( function ()
+    $( "#RenderButton" ).click( function()
     {
-//        html2canvas($("#Page" ), {
-//            onrendered: function(canvas) {
-//                document.body.appendChild(canvas);
-//            },
-//            width: 600,
-//            height: 800
-//        })
+        //        html2canvas($("#Page" ), {
+        //            onrendered: function(canvas) {
+        //                document.body.appendChild(canvas);
+        //            },
+        //            width: 600,
+        //            height: 800
+        //        })
         alert( "Coming soon! You'll have to just hit Print Screen and paste it into MS Paint, or something, for now.\n\n(And make sure you crop the image. Don't be that guy.)" );
-
     } );
 }
 
 function BindSubreddits( subreddit )
 {
     // Get those subreddit buttons working
-    $( "#Header" ).find( "li" ).each( function ( index, el )
-    {
-        if ( subreddit == $( el ).html() ) {
-            $( el ).addClass( 'subreddit-selected' );
-        }
-
-        $( el ).click( function ( ev )
-        {
-            var el = $( ev.target );
-            //sessionStorage.setItem( "subreddit", el.html() );
-            window.location.hash = el.html();
-            window.location.reload();
-        } );
-    } );
+//    $( "#Header" ).find( "li" ).each( function( index, el )
+//    {
+//        if ( subreddit == $( el ).html() ) {
+//            $( el ).addClass( 'subreddit-selected' );
+//        }
+//
+//        $( el ).click( function( ev )
+//        {
+//            var el = $( ev.target );
+//            //sessionStorage.setItem( "subreddit", el.html() );
+//            window.location.hash = el.html();
+//            window.location.reload();
+//        } );
+//    } );
+    $("#SubredditDropdown").on("change", function(e) {
+        window.location.hash = $(this).val();
+        window.location.reload();
+    });
 }
 
 function RenderHeaderValues( subreddit )
 {
     var today = new Date();
-    $( "#Date" ).html( month_str[today.getMonth()] + ' ' + today.getFullYear() );
+    $( "#Date" ).html( month_str[ today.getMonth() ] + ' ' + today.getFullYear() );
 
     if ( subreddit != "" ) {
         $( "#Subreddit" ).html( "/r/" + subreddit + " Edition" );
@@ -101,36 +102,66 @@ function RenderHeaderValues( subreddit )
 
 function FetchGoogleImageForTerm( title )
 {
-    console.log( "REVERTING TO GIS SEARCH: ", title );
-
-    $.ajax( {
-        url: "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + escape( title ), dataType: "jsonp", jsonpCallback: "jsonprec", success: function ( data, textStatus )
-        {
-            console.log( "GIS RESULT: ", data.responseData.results[0].url );
-            $( "#BackgroundImage" ).css( 'background-image', "url(" + data.responseData.results[0].url + ")" );
-        }} );
+//    console.log( "REVERTING TO GIS SEARCH: ", title );
+//
+//    $.ajax( {
+//                url:           "https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" + escape( title ),
+//                dataType:      "jsonp",
+//                jsonpCallback: "jsonprec",
+//                success:       function( data, textStatus ) {
+////                                    console.log(data);
+////                                   console.log( "GIS RESULT: ", data.responseData.results[ 0 ].url );
+//                                   $( "#BackgroundImage" ).css( 'background-image', "url(" + data.responseData.results[ 0 ].url + ")" );
+//                               }
+//            } );
 }
 
 function RenderBackgroundImage( posts )
 {
     var result = "";
+    var target_post = null;
 
     for ( var i = 0; i < posts.length; i++ ) {
-        var url = posts[i].data.url;
+        var url = posts[ i ].data.url;
+        //var thumb = posts[i].data.thumbnail;
+        var thumb = null;
+        if (posts[i].data.preview) {
+            thumb = posts[ i ].data.preview.images[ 0 ].source.url;
+        }
 
-        if ( (url.indexOf( 'i.imgur.com' ) >= 0) && ( (url.indexOf( '.jpg' ) >= 0) || (url.indexOf( '.png' )) >= 0) ) {
-            result = "url(" + url + ")";
+        if (thumb) {
+//        if (thumb.indexOf(".jpg")>0) {
+            result = "url('" + thumb + "')";
+            target_post = posts[i].data.preview;
+//            if ( (
+//                     ( url.indexOf( 'i.imgur.com' ) >= 0 ) ||
+//                     ( url.indexOf( 'gfycat.com' ) >= 0) ||
+//                     ( url.indexOf( 'i.redd.it' ) >= 0)
+//                 )
+//                 &&
+//                 (
+//                     ( url.indexOf( '.jpg' ) >= 0 ) ||
+//                     ( url.indexOf( '.jpeg' ) >= 0 ) ||
+//                     ( url.indexOf( '.png' ) >= 0 ) ||
+//                     ( url.indexOf( '.mp4' ) >= 0 ) ||
+//                     ( url.indexOf( '.gif' ) >= 0 )
+//                 )
+//            )
+//            {
+//                result = "url(" + url + ")";
+//            }
+            break;
         }
     }
 
     // if it's blank, try and use GIS to fetch an image
-    if ( result == "" ) {
-        result = FetchGoogleImageForTerm( posts[0].data.title );
-    }
+//    if ( result == "" ) {
+//        result = FetchGoogleImageForTerm( posts[ 0 ].data.title );
+//    }
     // otherwise, use the URL from the reddit post
-    else {
-        $( "#BackgroundImage" ).css( 'background-image', result );
-    }
+
+    $( "#BackgroundImage" ).css( 'background-image', result );
+    console.log("using", result, target_post);
 
     return result;
 }
@@ -148,7 +179,10 @@ function LoadFreshFeed( subreddit )
     }
 
     $.ajax( {
-        url: reddit_url, dataType: "jsonp", jsonpCallback: "jsonprec", success: function ( data, textStatus )
+        url: reddit_url,
+        dataType: "jsonp",
+        jsonpCallback: "jsonprec",
+        success: function( data, textStatus )
         {
             console.log( "FETCH FRESH COPY OF " + subreddit );
 
@@ -169,8 +203,9 @@ function LoadFreshFeed( subreddit )
 
 function GetZazzleWord()
 {
-    return zazzle_words[Math.floor( Math.random() * zazzle_words.length )];
+    return zazzle_words[ Math.floor( Math.random() * zazzle_words.length ) ];
 }
+
 function RenderPage( subreddit, subreddit_data )
 {
     var posts = subreddit_data.data.children;
@@ -184,8 +219,7 @@ function RenderPage( subreddit, subreddit_data )
     RenderBackgroundImage( posts );
 
     var total_headlines = 0;
-    $( ".headline_box" ).each( function ( index, el )
-    {
+    $( ".headline_box" ).each( function( index, el ) {
         $( el ).attr( 'id', 'headline' + index );
         total_headlines++;
     } );
@@ -197,12 +231,12 @@ function RenderPage( subreddit, subreddit_data )
     }
 
     var cur_post = 0;
-    var style_counter = Math.floor( Math.random() * (MAX_STYLES) );
+    var style_counter = Math.floor( Math.random() * ( MAX_STYLES ) );
 
     for ( var i = 0; i < max_posts; i++, cur_post++ ) {
         // make sure we only pick reasonably sized titles
-        if ( posts[cur_post] ) {
-            while ( posts[cur_post].data.title.length > MAX_TITLE_LENGTH ) {
+        if ( posts[ cur_post ] ) {
+            while ( posts[ cur_post ].data.title.length > MAX_TITLE_LENGTH ) {
                 cur_post++;
                 if ( cur_post >= posts.length ) {
                     i = max_posts;
@@ -210,20 +244,22 @@ function RenderPage( subreddit, subreddit_data )
                 }
             }
 
-            if ( posts[cur_post] ) {
+            if ( posts[ cur_post ] ) {
                 var headline = $( "#headline" + i );
-                var title = Cleanse( posts[cur_post].data.title );
+                var title = Cleanse( posts[ cur_post ].data.title );
 
                 if ( title.length >= 22 ) {
-                    if ( (Math.floor( Math.random() * 100 )) < 10 ) {
+                    if ( ( Math.floor( Math.random() * 100 ) ) < 10 ) {
                         title = "<span>" + GetZazzleWord() + "</span> " + title;
                         headline.addClass( 'headline-style1' );
                     }
                 }
 
-                headline.html( "<a href='" + posts[cur_post].data.url + "'>" + title + "</a>" );
+                headline.html( "<a href='" + posts[ cur_post ].data.url + "'>" + title + "</a>" );
 
-                if ( title.length > 45 ) {
+                if (word_count(title) == 1) {
+                    headline.addClass( 'headline-size-xlarge' );
+                } else if ( title.length > 45 ) {
                     headline.addClass( 'headline-size-small' );
                 }
                 else if ( title.length < 9 ) {
@@ -257,6 +293,11 @@ function RenderPage( subreddit, subreddit_data )
     }
 }
 
+function word_count( str )
+{
+    return str.split( " " ).length;
+}
+
 function FetchSubredditFromURL()
 {
     var result = "";
@@ -269,7 +310,7 @@ function Cleanse( str )
 {
     var newstr;
 
-    if ( str[str.length - 1] == '.' ) {
+    if ( str[ str.length - 1 ] == '.' ) {
         newstr = str.substr( 0, str.length - 1 );
     }
     else {

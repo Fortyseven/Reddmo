@@ -1,0 +1,300 @@
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    padding:     0;
+    margin:      auto;
+    font-family: "Open Sans", sans-serif;
+    font-size:   62.5%;
+    background:  -moz-linear-gradient(top, #ffffff 0%, #c9c9c9 100%); /* FF3.6+ */
+    background:  -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #c9c9c9)); /* Chrome,Safari4+ */
+    background:  -webkit-linear-gradient(top, #ffffff 0%, #c9c9c9 100%); /* Chrome10+,Safari5.1+ */
+    background:  -o-linear-gradient(top, #ffffff 0%, #c9c9c9 100%); /* Opera 11.10+ */
+    background:  -ms-linear-gradient(top, #ffffff 0%, #c9c9c9 100%); /* IE10+ */
+    background:  linear-gradient(to bottom, #ffffff 0%, #c9c9c9 100%); /* W3C */
+}
+
+#Page {
+    width:        600px;
+    height:       800px;
+    margin-left:  auto;
+    margin-right: auto;
+    margin-top:   1em;
+    overflow:     hidden;
+    background:   black;
+    border:       0.25em solid black;
+    box-shadow:   black 0 0 15px;
+}
+
+#BackgroundImage {
+    width:               100%;
+    height:              100%;
+    background-size:     cover;
+    background-position: center;
+    background-color:    white;
+    opacity:             0.6;
+}
+
+#Content {
+    position:  relative;
+    top:       -800px;
+    left:      0;
+    max-width: 1024px;
+}
+
+/*-----------------------------------------------------*/
+
+header {
+    background:    darkred;
+    color:         white;
+    text-align:    center;
+    padding:       1em;
+    border-radius: 2em;
+    font-size:     1.2rem;
+    max-width:     80%;
+    margin:        auto;
+
+    .content {
+        margin: auto;
+    }
+
+    ul {
+        list-style-type: none;
+        padding:         0;
+        margin:          1em;
+        display:         flex;
+        flex-wrap:       wrap;
+    }
+
+    li {
+        cursor:        pointer;
+        background:    #cc0000;
+        padding:       0.3em;
+        margin:        0.3em;
+        font-size:     0.8em;
+        font-weight:   bold;
+        box-shadow:    #000000 2px 2px 2px;
+        border-radius: 4px;
+        flex:          1 1 15%;
+
+        &:hover {
+            color:      black;
+            background: red;
+            box-shadow: none;
+            position:   relative;
+            top:        2px;
+            left:       2px;
+        }
+
+        .subreddit-selected {
+            color:       black;
+            font-weight: bold;
+            background:  gold;
+            box-shadow:  none;
+        }
+    }
+
+    .controls {
+        width:        80%;
+        margin-left:  auto;
+        margin-right: auto;
+    }
+
+    .notice {
+        padding-right: 1em;
+        text-align:    center;
+        color:         red;
+        font-weight:   bold;
+        font-size:     0.8em;
+        opacity:       0.6;
+    }
+}
+
+/*-----------------------------------------------------*/
+
+#MagazineHeader {
+    width:         36em;
+    border-bottom: 2px solid white;
+    padding-top:   1em;
+    margin-left:   auto;
+    margin-right:  auto;
+}
+
+#Title:after {
+    font-family:    Monoton, sans-serif;
+    color:          red;
+    font-size:      7em;
+    content:        "Reddmo";
+    text-transform: capitalize;
+    text-shadow:    2px 2px 1px white;
+    line-height:    1em;
+}
+
+/*-----------------------------------------------------*/
+
+#Infoline {
+    font-size:   0.9em;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding:     0.35em;
+    background:  darkred;
+    text-shadow: 2px 2px 2px black;
+}
+
+#Subreddit,
+#Date {
+    color:          white;
+    text-align:     right;
+    text-transform: uppercase;
+}
+
+#Subreddit {
+    text-align: left;
+    float:      left;
+    width:      50%;
+}
+
+/*-----------------------------------------------------*/
+
+#HeadlineBoxes {
+    margin-left:  auto;
+    margin-right: auto;
+    padding:      2em;
+}
+
+#LeftCol {
+    width:      220px;
+    float:      left;
+    text-align: left;
+}
+
+#RightCol {
+    width:      220px;
+    float:      right;
+    text-align: right;
+}
+
+/*-----------------------------------------------------*/
+
+.headline_box {
+    width:          220px;
+    height:         122px;
+    text-transform: uppercase;
+    text-shadow:    2px 2px 1px black;
+    line-height:    1;
+    padding-bottom: 0.2em;
+}
+
+.headline_box a {
+    text-decoration: none;
+    color:           yellow;
+}
+
+.headline_box span {
+    color:           white;
+    text-decoration: underline;
+}
+
+.headline-size-xlarge {
+    font-size:   5em;
+    line-height: 1em;
+}
+
+.headline-size-large {
+    font-size:   3.7em;
+    line-height: 1em;
+}
+
+.headline-size-medium {
+    font-size:   2.5em;
+    line-height: 1em;
+}
+
+.headline-size-small {
+    font-size:   2em;
+    line-height: 1em;
+}
+
+.headline-style-1 a {
+    font-family: "Oswald", sans-serif;
+    color:       gold;
+    text-shadow: 2px 2px 1px black;
+}
+
+.headline-style-2 a {
+    font-family: serif, "Oswald", sans-serif;
+    text-shadow: 2px 2px 1px black;
+    font-weight: bold;
+    color:       red;
+}
+
+.headline-style-3 a {
+    font-family: "Oswald";
+    font-weight: bold;
+    text-shadow: 1px 1px 3px black;
+    color:       white;
+}
+
+/*-----------------------------------------------------*/
+
+#UPCBox {
+    width:      216px;
+    height:     144px;
+    position:   absolute;
+    top:        637px;
+    left:       31px;
+    border:     2px solid black;
+    background: white url("../images/upc.jpg");
+}
+
+/*-----------------------------------------------------*/
+
+.clear {
+    clear: both;
+}
+
+button {
+    color:         black;
+    background:    gold;
+    border:        none;
+    border-radius: 1em;
+    box-shadow:    black 1px 1px 5px;
+    padding:       0.3em;
+    padding-left:  1em;
+    padding-right: 1em;
+    font-weight:   bold;
+    line-height:   1;
+}
+
+button:hover {
+    position:   relative;
+    background: yellow;
+    top:        1px;
+    color:      black;
+    box-shadow: none;
+}
+
+#RenderButton {
+    opacity: 0.5;
+}
+
+#IntroText {
+    font-weight: bold;
+    font-size:   1.0em;
+}
+
+#Ad {
+    width:    0px;
+    height:   0px;
+    position: relative;
+    top:      -800px;
+    right:    0px;
+}
+
+#Ad .content {
+    width:  120px;
+    height: 600px;
+    border: 1px solid black;
+}

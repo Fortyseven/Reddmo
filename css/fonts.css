@@ -1,4 +1,5 @@
-@font-face {
+
+/*@font-face {
     font-family: 'oswaldbold';
     src:         url('../fonts/oswald-bold-webfont.eot');
     src:         url('../fonts/oswald-bold-webfont.woff') format('woff'), url('../fonts/oswald-bold-webfont.ttf') format('truetype'), url('../fonts/oswald-bold-webfont.svg#oswaldbold') format('svg');
@@ -20,7 +21,7 @@
     src:         url('../fonts/oswald-regular-webfont.woff') format('woff'), url('../fonts/oswald-regular-webfont.ttf') format('truetype'), url('../fonts/oswald-regular-webfont.svg#oswaldregular') format('svg');
     font-weight: normal;
     font-style:  normal;
-}
+}*/
 
 @font-face {
     font-family: 'Monoton';
