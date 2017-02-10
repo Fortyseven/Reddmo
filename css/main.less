@@ -16,6 +16,13 @@ body {
     background:  linear-gradient(to bottom, #ffffff 0%, #c9c9c9 100%); /* W3C */
 }
 
+.stroke(@size:2px) {
+    text-shadow: -1px -1px @size #000,
+                     1px -1px @size #000,
+                 -1px 1px @size #000,
+                 1px 1px @size #000;
+}
+
 #Page {
     width:        600px;
     height:       800px;
@@ -25,23 +32,72 @@ body {
     overflow:     hidden;
     background:   black;
     border:       0.25em solid black;
-    box-shadow:   black 0 0 15px;
-}
+    box-shadow:   black 0 0 15em;
 
-#BackgroundImage {
-    width:               100%;
-    height:              100%;
-    background-size:     cover;
-    background-position: center;
-    background-color:    white;
-    opacity:             0.6;
-}
+    #BackgroundImage {
+        width:               100%;
+        height:              100%;
+        background-size:     cover;
+        background-position: center;
+        background-color:    white;
+        opacity:             0.6;
+    }
 
-#Content {
-    position:  relative;
-    top:       -800px;
-    left:      0;
-    max-width: 1024px;
+    #Content {
+        position:  relative;
+        top:       -800px;
+        left:      0;
+        max-width: 1024px;
+        padding: 1em;
+
+        #MagazineHeader {
+            width:         100%;
+            border-bottom: 2px solid white;
+            padding-top:   1em;
+            margin-left:   auto;
+            margin-right:  auto;
+        }
+
+        #HeadlineBoxes {
+            #LeftCol, #RightCol {
+                width:          45%;
+                height:         31rem;
+                display:        flex;
+                flex-direction: column;
+                text-overflow:  ellipsis;
+                overflow:       hidden;
+                .headline_box {
+                    //width:          220px;
+                    //height:         122px;
+                    flex:           1 1 auto;
+                    text-transform: uppercase;
+                    //text-shadow:    2px 2px 1px black;
+                    line-height:    1em;
+                    padding-bottom: 0.2em;
+                }
+            }
+            #LeftCol {
+                float:      left;
+                text-align: left;
+            }
+
+            #RightCol {
+                height:     41rem;
+                float:      right;
+                text-align: right;
+            }
+        }
+
+        #UPCBox {
+            width:      216px;
+            height:     144px;
+            position:   absolute;
+            top:        637px;
+            left:       31px;
+            border:     2px solid black;
+            background: white url("../images/upc.jpg");
+        }
+    }
 }
 
 /*-----------------------------------------------------*/
@@ -114,14 +170,6 @@ header {
 
 /*-----------------------------------------------------*/
 
-#MagazineHeader {
-    width:         36em;
-    border-bottom: 2px solid white;
-    padding-top:   1em;
-    margin-left:   auto;
-    margin-right:  auto;
-}
-
 #Title:after {
     font-family:    Monoton, sans-serif;
     color:          red;
@@ -164,27 +212,9 @@ header {
     padding:      2em;
 }
 
-#LeftCol {
-    width:      220px;
-    float:      left;
-    text-align: left;
-}
-
-#RightCol {
-    width:      220px;
-    float:      right;
-    text-align: right;
-}
-
 /*-----------------------------------------------------*/
 
 .headline_box {
-    width:          220px;
-    height:         122px;
-    text-transform: uppercase;
-    text-shadow:    2px 2px 1px black;
-    line-height:    1;
-    padding-bottom: 0.2em;
 }
 
 .headline_box a {
@@ -198,56 +228,48 @@ header {
 }
 
 .headline-size-xlarge {
-    font-size:   5em;
-    line-height: 1em;
+    font-size: 5em;
+    .stroke(6px);
+    //line-height: 1em;
 }
 
 .headline-size-large {
-    font-size:   3.7em;
-    line-height: 1em;
+    font-size: 3.7em;
+    .stroke(4px);
+
+    //line-height: 1em;
 }
 
 .headline-size-medium {
-    font-size:   2.5em;
-    line-height: 1em;
+    font-size: 2.5em;
+    .stroke(2px);
+    //line-height: 1em;
 }
 
 .headline-size-small {
-    font-size:   2em;
-    line-height: 1em;
+    .stroke(1px);
+    font-size: 2em;
+    //line-height: 1em;
 }
 
 .headline-style-1 a {
     font-family: "Oswald", sans-serif;
     color:       gold;
-    text-shadow: 2px 2px 1px black;
 }
 
 .headline-style-2 a {
     font-family: serif, "Oswald", sans-serif;
-    text-shadow: 2px 2px 1px black;
     font-weight: bold;
     color:       red;
 }
 
 .headline-style-3 a {
-    font-family: "Oswald";
+    font-family: "Oswald", sans-serif;
     font-weight: bold;
-    text-shadow: 1px 1px 3px black;
     color:       white;
 }
 
 /*-----------------------------------------------------*/
-
-#UPCBox {
-    width:      216px;
-    height:     144px;
-    position:   absolute;
-    top:        637px;
-    left:       31px;
-    border:     2px solid black;
-    background: white url("../images/upc.jpg");
-}
 
 /*-----------------------------------------------------*/
 

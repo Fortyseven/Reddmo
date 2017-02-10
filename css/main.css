@@ -29,9 +29,9 @@ body {
   overflow: hidden;
   background: black;
   border: 0.25em solid black;
-  box-shadow: black 0 0 15px;
+  box-shadow: black 0 0 15em;
 }
-#BackgroundImage {
+#Page #BackgroundImage {
   width: 100%;
   height: 100%;
   background-size: cover;
@@ -39,11 +39,53 @@ body {
   background-color: white;
   opacity: 0.6;
 }
-#Content {
+#Page #Content {
   position: relative;
   top: -800px;
   left: 0;
   max-width: 1024px;
+  padding: 1em;
+}
+#Page #Content #MagazineHeader {
+  width: 100%;
+  border-bottom: 2px solid white;
+  padding-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+#Page #Content #HeadlineBoxes #LeftCol,
+#Page #Content #HeadlineBoxes #RightCol {
+  width: 45%;
+  height: 31rem;
+  display: flex;
+  flex-direction: column;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+#Page #Content #HeadlineBoxes #LeftCol .headline_box,
+#Page #Content #HeadlineBoxes #RightCol .headline_box {
+  flex: 1 1 auto;
+  text-transform: uppercase;
+  line-height: 1em;
+  padding-bottom: 0.2em;
+}
+#Page #Content #HeadlineBoxes #LeftCol {
+  float: left;
+  text-align: left;
+}
+#Page #Content #HeadlineBoxes #RightCol {
+  height: 41rem;
+  float: right;
+  text-align: right;
+}
+#Page #Content #UPCBox {
+  width: 216px;
+  height: 144px;
+  position: absolute;
+  top: 637px;
+  left: 31px;
+  border: 2px solid black;
+  background: white url("../images/upc.jpg");
 }
 /*-----------------------------------------------------*/
 header {
@@ -105,13 +147,6 @@ header .notice {
   opacity: 0.6;
 }
 /*-----------------------------------------------------*/
-#MagazineHeader {
-  width: 36em;
-  border-bottom: 2px solid white;
-  padding-top: 1em;
-  margin-left: auto;
-  margin-right: auto;
-}
 #Title:after {
   font-family: Monoton, sans-serif;
   color: red;
@@ -147,25 +182,7 @@ header .notice {
   margin-right: auto;
   padding: 2em;
 }
-#LeftCol {
-  width: 220px;
-  float: left;
-  text-align: left;
-}
-#RightCol {
-  width: 220px;
-  float: right;
-  text-align: right;
-}
 /*-----------------------------------------------------*/
-.headline_box {
-  width: 220px;
-  height: 122px;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 1px black;
-  line-height: 1;
-  padding-bottom: 0.2em;
-}
 .headline_box a {
   text-decoration: none;
   color: yellow;
@@ -176,47 +193,35 @@ header .notice {
 }
 .headline-size-xlarge {
   font-size: 5em;
-  line-height: 1em;
+  text-shadow: -1px -1px 6px #000, 1px -1px 6px #000, -1px 1px 6px #000, 1px 1px 6px #000;
 }
 .headline-size-large {
   font-size: 3.7em;
-  line-height: 1em;
+  text-shadow: -1px -1px 4px #000, 1px -1px 4px #000, -1px 1px 4px #000, 1px 1px 4px #000;
 }
 .headline-size-medium {
   font-size: 2.5em;
-  line-height: 1em;
+  text-shadow: -1px -1px 2px #000, 1px -1px 2px #000, -1px 1px 2px #000, 1px 1px 2px #000;
 }
 .headline-size-small {
+  text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
   font-size: 2em;
-  line-height: 1em;
 }
 .headline-style-1 a {
   font-family: "Oswald", sans-serif;
   color: gold;
-  text-shadow: 2px 2px 1px black;
 }
 .headline-style-2 a {
   font-family: serif, "Oswald", sans-serif;
-  text-shadow: 2px 2px 1px black;
   font-weight: bold;
   color: red;
 }
 .headline-style-3 a {
-  font-family: "Oswald";
+  font-family: "Oswald", sans-serif;
   font-weight: bold;
-  text-shadow: 1px 1px 3px black;
   color: white;
 }
 /*-----------------------------------------------------*/
-#UPCBox {
-  width: 216px;
-  height: 144px;
-  position: absolute;
-  top: 637px;
-  left: 31px;
-  border: 2px solid black;
-  background: white url("../images/upc.jpg");
-}
 /*-----------------------------------------------------*/
 .clear {
   clear: both;
