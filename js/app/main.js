@@ -255,14 +255,13 @@ function RenderPage( subreddit, subreddit_data )
                     }
                 }
 
-                headline.html( "<a href='" + posts[ cur_post ].data.url + "'>" + title + "</a>" );
-
-                if (word_count(title) == 1) {
-                    headline.addClass( 'headline-size-xlarge' );
-                } else if ( title.length > 45 ) {
+//                if (word_count(title) == 1) {
+//                    headline.addClass( 'headline-size-xlarge' );
+//                } else
+                    if ( title.length > 45 ) {
                     headline.addClass( 'headline-size-small' );
                 }
-                else if ( title.length < 9 ) {
+                else if ( title.length < 8 ) {
                     headline.addClass( 'headline-size-xlarge' );
                 }
                 else if ( title.length < 22 ) {
@@ -270,6 +269,13 @@ function RenderPage( subreddit, subreddit_data )
                 }
                 else {
                     headline.addClass( 'headline-size-medium' );
+                }
+
+                if (word_count(title) <= 2) {
+                    if ((Math.random() * 100) < 50 )
+                        title = title + "!";
+                    else if ((Math.random() * 100) < 50 )
+                        title = title + "?";
                 }
 
                 // pick a style
@@ -286,8 +292,9 @@ function RenderPage( subreddit, subreddit_data )
                         break;
                 }
 
-                style_counter++;
+                headline.html( "<a href='" + posts[ cur_post ].data.url + "'>" + title + "</a>" );
 
+                style_counter++;
             }
         }
     }
