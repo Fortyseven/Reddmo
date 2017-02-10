@@ -171,11 +171,11 @@ function LoadFreshFeed( subreddit )
     // choose the appropriate source for it
     if ( subreddit == '' ) {
         //reddit_url = "ajax.php?url=reddit.com/.json";
-        reddit_url = "http://reddit.com/.json?limit=" + LIMIT + "&jsonp=jsonprec"
+        reddit_url = "https://reddit.com/.json?limit=" + LIMIT + "&jsonp=jsonprec"
     }
     else {
         //reddit_url = "ajax.php?url=reddit.com/r/"+subreddit+"/.json";
-        reddit_url = "http://reddit.com/r/" + subreddit + "/.json?limit=" + LIMIT + "&jsonp=jsonprec";
+        reddit_url = "https://reddit.com/r/" + subreddit + "/.json?limit=" + LIMIT + "&jsonp=jsonprec";
     }
 
     $.ajax( {
